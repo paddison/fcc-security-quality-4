@@ -1,6 +1,3 @@
-// in glitch sometimes the tests run, sometimes they don't, but i dont really know why
-
-
 const textArea = document.getElementById('text-input');
 const grid = document.getElementsByClassName("grid")[0];
 const numRegex = /[1-9]/;
@@ -11,8 +8,7 @@ const errorDiv = document.getElementById("error-msg");
 
 
 let populateGrid = function(str = '..9..5.1.85.4....2432......1...69.83.9.....6.62.71...9......1945....4.37.4.3..6..') {
-  textArea.value = str;
-  let text = textArea.value.split("");
+  let text = str.split("");
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
       let cell = grid.rows[i].cells[j].firstElementChild
@@ -86,9 +82,6 @@ let parseGrid = function(str) {
 
 let solve = function(str) {
 
-  if (str === "") {
-    return "no solution found"
-  }
   let board = [];
   
   for (let i = 0; i < 9; i++) {
@@ -217,7 +210,8 @@ let solve = function(str) {
 };  
 
 document.addEventListener('DOMContentLoaded', () => {
-  populateGrid('..9..5.1.85.4....2432......1...69.83.9.....6.62.71...9......1945....4.37.4.3..6..');
+  textArea.value = '..9..5.1.85.4....2432......1...69.83.9.....6.62.71...9......1945....4.37.4.3..6..'
+  populateGrid(textArea.value);
 
 });
 
